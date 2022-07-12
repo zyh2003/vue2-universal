@@ -6,43 +6,41 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
+      v-for="(item, index) in list.menus"
+      :key="index"
       router
     >
-      <el-menu-item index="/">
-        <i class="el-icon-s-home"></i>
-        <span slot="title">控制台</span>
-      </el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">
-          <i class="el-icon-s-grid"></i>
-          <span>系统管理</span>
-        </template>
-        <el-menu-item index="/sys/users">
-          <i class="el-icon-user"></i>
-          用户管理
+      <!-- {{item.name}} -->
+      <template v-if="item && item.children.length == 0">
+        <el-menu-item :index="item.path">
+          <i :class="'el-icon-' + item.icon"></i>
+          <span slot="title">{{ item.label }}</span>
         </el-menu-item>
-        <el-menu-item index="/sys/roles">
-          <i class="el-icon-user-solid"></i>
-          角色管理
-        </el-menu-item>
-        <el-menu-item index="/sys/menus">
-          <i class="el-icon-menu"></i>
-          菜单管理
-        </el-menu-item>
-      </el-submenu>
+      </template>
+      <template v-if="item && item.children.length > 0">
+        <el-submenu :index="item.path">
+          <template slot="title">
+            <i :class="'el-icon-' + item.icon"></i>
+            <span>{{ item.label }}</span>
+          </template>
+          <item v-for="(i, ind) in item.children" :key="ind" :i="i"></item>
+        </el-submenu>
+      </template>
     </el-menu>
   </div>
 </template>
 
 <script>
+import Item from './Item.vue'
 export default {
+  props: ['list'],
   data() {
     return {}
   },
   methods: {},
   created() {},
   mounted() {},
-  components: {},
+  components: { Item },
   computed: {},
   watch: {}
 }
@@ -50,7 +48,6 @@ export default {
 
 <style lang="scss" scoped>
 .el-menu {
-    border-right: none;
+  border-right: none;
 }
-
 </style>

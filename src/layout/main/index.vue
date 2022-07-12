@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <router-view></router-view>
   </div>
 </template>
@@ -18,4 +18,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.main{
+  background-color: #fff;
+  height: 100%;
+  border-radius: 5px;
+}
+</style>

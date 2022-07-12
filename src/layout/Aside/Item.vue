@@ -1,20 +1,22 @@
 <template>
   <div>
-    <crumbs></crumbs>
+    <el-menu-item :index="i.path">
+      <i :class="'el-icon-' + i.icon"></i>
+      {{ i.label }}
+    </el-menu-item>
   </div>
 </template>
 
 <script>
-import Crumbs from '@/components/crumbs.vue'
-
 export default {
+  props: ['i'],
   data() {
     return {}
   },
   methods: {},
   created() {},
   mounted() {},
-  components: { Crumbs },
+  components: {},
   computed: {},
   watch: {}
 }

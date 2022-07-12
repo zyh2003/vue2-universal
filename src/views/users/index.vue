@@ -1,8 +1,11 @@
 <template>
-  <div>用户管理</div>
+  <div>
+    <crumbs></crumbs>
+  </div>
 </template>
 
 <script>
+import Crumbs from '@/components/crumbs.vue'
 export default {
   data() {
     return {}
@@ -10,7 +13,7 @@ export default {
   methods: {},
   created() {},
   mounted() {},
-  components: {},
+  components: { Crumbs },
   computed: {},
   watch: {}
 }

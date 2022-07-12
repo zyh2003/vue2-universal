@@ -17,8 +17,16 @@ const getLogin = (data) => {
     method: 'POST'
   })
 }
+/**
+ * 用户信息
+ * @returns
+ */
 const getUserInfo = () => {
   return request({ url: '/user/info', method: 'GET' })
+}
+
+const getNav = () => {
+  return request({ url: '/menu/nav', method: 'GET' })
 }
 /**
  * 导出封装的接口
@@ -26,5 +34,6 @@ const getUserInfo = () => {
 export default {
   getCaptcha,
   getLogin,
-  getUserInfo
+  getUserInfo,
+  getNav
 }

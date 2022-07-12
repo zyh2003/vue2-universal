@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
 // import router from "@/router";
-import store from '@/store'
+// import store from '@/store'
 import exceptionMessage from './exception-message'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
@@ -11,9 +11,9 @@ service.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
     // 把token加入请求头中, 不需要可以删除下面4句代码
-    const token = store.state.token
-    console.log(token)
-
+    const token = localStorage.getItem('token')
+    // console.log(token)
+    config.headers.token = token
     return config
   },
   function (error) {

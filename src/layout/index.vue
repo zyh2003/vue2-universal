@@ -2,7 +2,7 @@
   <div>
     <el-container>
       <el-aside width="200px" class="index-aside">
-        <AppAside></AppAside>
+        <AppAside :list="list"></AppAside>
       </el-aside>
       <el-container>
         <el-header class="index-header">
@@ -20,6 +20,7 @@
 import AppAside from './Aside'
 import AppHeader from './header'
 import AppMain from './main'
+import navApi from '../api/user'
 export default {
   components: {
     AppAside,
@@ -27,10 +28,20 @@ export default {
     AppMain
   },
   data() {
-    return {}
+    return {
+      list: ''
+    }
   },
-  methods: {},
-  created() {},
+  methods: {
+    async getNav() {
+      const response = await navApi.getNav()
+      console.log(response)
+      this.list = response
+    }
+  },
+  created() {
+    this.getNav()
+  },
   mounted() {},
   computed: {},
   watch: {}
