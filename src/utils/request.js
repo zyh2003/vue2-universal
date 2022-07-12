@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { Message } from 'element-ui'
 // import router from "@/router";
-// import store from "@/store";
-// import { ElMessage } from "element-ui/types/message";
+import store from '@/store'
+import exceptionMessage from './exception-message'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
@@ -10,6 +11,9 @@ service.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
     // 把token加入请求头中, 不需要可以删除下面4句代码
+    const token = store.state.token
+    console.log(token)
+
     return config
   },
   function (error) {
@@ -19,16 +23,24 @@ service.interceptors.request.use(
 )
 service.interceptors.response.use(
   function (response) {
-    // 对响应数据做点什么
-    // 解决token错误或是过期
-    // 把response的data返回给客户端, 不需要可以删除下面1句代码
-    return response
+    if (response.data.code === 200) {
+      return response.data.data
+    }
+    _showErrorMessage(response.data.code, response.data.msg)
   },
   function (error) {
     // 对响应错误做点什么
     return Promise.reject(error)
   }
 )
+const _showErrorMessage = (code, msg) => {
+  const message = exceptionMessage[code] || msg || '未知错误'
+  Message({
+    showClose: true,
+    message,
+    type: 'error'
+  })
+}
 /**
  * 统一传参处理
  * @param {*} options
