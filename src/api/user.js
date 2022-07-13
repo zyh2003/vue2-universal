@@ -24,10 +24,35 @@ const getLogin = (data) => {
 const getUserInfo = () => {
   return request({ url: '/user/info', method: 'GET' })
 }
-
+/**
+ * 左侧菜单
+ * @returns
+ */
 const getNav = () => {
   return request({ url: '/menu/nav', method: 'GET' })
 }
+/**
+ * 菜单列表
+ * @returns
+ */
+const getMenuList = () => {
+  return request({ url: 'menu/list', method: 'GET' })
+}
+/**
+ * 角色列表
+ *  @returns
+ */
+const getRoleList = () => {
+  return request({ url: 'role/list', method: 'GET' })
+}
+/**
+ * 用户列表
+ * @returns
+ */
+const getUserList = () => {
+  return request({ url: 'user/list', method: 'GET' })
+}
+
 /**
  * 导出封装的接口
  */
@@ -35,5 +60,8 @@ export default {
   getCaptcha,
   getLogin,
   getUserInfo,
-  getNav
+  getNav,
+  getMenuList,
+  getRoleList,
+  getUserList
 }

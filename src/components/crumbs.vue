@@ -1,9 +1,9 @@
 <template>
   <div class="crumbs">
-    <el-breadcrumb separator="/">
+    <!-- <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-    </el-breadcrumb>
+      <el-breadcrumb-item>系统管理</el-breadcrumb-item>
+    </el-breadcrumb> -->
   </div>
 </template>
 

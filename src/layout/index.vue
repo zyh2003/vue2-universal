@@ -35,7 +35,7 @@ export default {
   methods: {
     async getNav() {
       const response = await navApi.getNav()
-      console.log(response)
+      // console.log(response)
       this.list = response
     }
   },
